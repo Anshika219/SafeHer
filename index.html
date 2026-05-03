@@ -7,35 +7,45 @@
 <style>
 /* Reset */
 
+
+
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
+/* BODY */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #f6f1eb, #ede3da);
     color: #2b2b2b;
     min-height: 100vh;
+    line-height: 1.4;
 }
 
-/* Header */
+/* REMOVE DEFAULT SPACING */
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
 header {
     background: linear-gradient(90deg, #b08968, #7f5539);
     color: #fff;
     text-align: center;
-    padding: 18px;
-    font-size: 20px;
+    padding: 14px;
+    font-size: 18px;
     font-weight: bold;
     box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
 
-/* Navigation */
+/* NAVIGATION */
 nav {
     background: #2b1d14;
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     position: sticky;
     top: 0;
@@ -43,14 +53,15 @@ nav {
 }
 
 nav button {
-    margin: 6px;
-    padding: 10px 14px;
+    margin: 5px;
+    padding: 9px 12px;
     color: #f5e9dc;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.25s ease;
+    font-size: 13px;
 }
 
 nav button:hover {
@@ -58,16 +69,28 @@ nav button:hover {
     transform: scale(1.05);
 }
 
-/* Panic Button (kept strong but toned down red → deep brown alert) */
+/* SECTIONS (IMPORTANT FIX) */
+.section {
+    display: none;
+    padding: 18px 16px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.section.active {
+    display: block;
+}
+
+/* PANIC BUTTON */
 .panic-btn {
     background: radial-gradient(circle, #8d5b4c, #5a3e36);
     color: white;
-    padding: 35px;
-    font-size: 20px;
+    padding: 30px;
+    font-size: 18px;
     border: none;
     border-radius: 50%;
     display: block;
-    margin: 25px auto;
+    margin: 18px auto;
     cursor: pointer;
     box-shadow: 0 0 20px rgba(90, 62, 54, 0.35);
     transition: 0.3s;
@@ -75,81 +98,75 @@ nav button:hover {
 }
 
 .panic-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
     box-shadow: 0 0 30px rgba(90, 62, 54, 0.5);
 }
 
-/* Cards */
+/* CARDS */
 .card {
     background: #fffaf5;
-    padding: 16px;
-    margin: 12px 0;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transition: 0.3s;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     border: 1px solid #e7d6c8;
+    transition: 0.2s;
 }
 
 .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
-/* Inputs */
+/* INPUTS */
 input {
     width: 100%;
-    padding: 12px;
-    margin: 6px 0;
+    padding: 10px;
+    margin: 4px 0;
     border: 1px solid #d8c3b5;
     border-radius: 8px;
     outline: none;
-    transition: 0.3s;
     background: #fffaf5;
+    font-size: 14px;
 }
 
 input:focus {
     border-color: #b08968;
-    box-shadow: 0 0 8px rgba(176,137,104,0.25);
+    box-shadow: 0 0 6px rgba(176,137,104,0.25);
 }
 
-/* Submit Button */
+/* BUTTON */
 button.submit {
     background: linear-gradient(90deg, #b08968, #7f5539);
     color: white;
-    padding: 10px 14px;
+    padding: 10px 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 14px;
 }
 
 button.submit:hover {
     transform: scale(1.05);
 }
-.section {
-    display: none;
-    padding: 25px;
-}
 
-.section.active {
-    display: block;
-}
-.section {
-    width: 100%;
-    min-height: 100vh;
-}
-
-/* Mobile Responsive */
+/* MOBILE */
 @media (max-width: 600px) {
     nav button {
-        padding: 8px 10px;
-        font-size: 12px;
+        padding: 7px 9px;
+        font-size: 11px;
     }
 
     .panic-btn {
-        padding: 28px;
-        font-size: 18px;
+        padding: 25px;
+        font-size: 16px;
+    }
+
+    .section {
+        padding: 14px 12px;
     }
 }
+
 </style>
 </head>
 
