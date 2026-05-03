@@ -5,18 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SafeHer - Women Safety</title>
 <style>
-/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-
-
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* BODY */
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #f6f1eb, #ede3da);
@@ -25,13 +15,8 @@ body {
     line-height: 1.4;
 }
 
-/* REMOVE DEFAULT SPACING */
-h1, h2, h3, p {
-    margin: 0;
-    padding: 0;
-}
+h1, h2, h3, p { margin: 0; padding: 0; }
 
-/* HEADER */
 header {
     background: linear-gradient(90deg, #b08968, #7f5539);
     color: #fff;
@@ -42,7 +27,58 @@ header {
     box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
 
-/* NAVIGATION */
+/* LOGIN SCREEN */
+#loginScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 20px;
+    text-align: center;
+}
+
+#loginScreen h2 {
+    font-size: 22px;
+    color: #7f5539;
+    margin-bottom: 10px;
+}
+
+#loginScreen p {
+    color: #a08070;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.google-btn {
+    background: white;
+    color: #444;
+    border: 1px solid #d8c3b5;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.google-btn:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+    transform: translateY(-1px);
+}
+
+.google-btn img {
+    width: 22px;
+    height: 22px;
+}
+
+/* APP SCREEN */
+#appScreen { display: none; }
+
 nav {
     background: #2b1d14;
     padding: 10px;
@@ -64,12 +100,35 @@ nav button {
     font-size: 13px;
 }
 
-nav button:hover {
-    background: #b08968;
-    transform: scale(1.05);
+nav button:hover { background: #b08968; transform: scale(1.05); }
+
+/* USER BAR */
+#userBar {
+    background: #3e2a1e;
+    color: #f5e9dc;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    max-width: 100%;
 }
 
-/* SECTIONS (IMPORTANT FIX) */
+#userBar span { opacity: 0.85; }
+
+.logout-btn {
+    background: rgba(255,255,255,0.1);
+    color: #f5e9dc;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.logout-btn:hover { background: #c0392b; }
+
 .section {
     display: none;
     padding: 18px 16px;
@@ -77,11 +136,8 @@ nav button:hover {
     margin: auto;
 }
 
-.section.active {
-    display: block;
-}
+.section.active { display: block; }
 
-/* PANIC BUTTON */
 .panic-btn {
     background: radial-gradient(circle, #8d5b4c, #5a3e36);
     color: white;
@@ -92,17 +148,16 @@ nav button:hover {
     display: block;
     margin: 18px auto;
     cursor: pointer;
-    box-shadow: 0 0 20px rgba(90, 62, 54, 0.35);
+    box-shadow: 0 0 20px rgba(90,62,54,0.35);
     transition: 0.3s;
     font-weight: bold;
 }
 
 .panic-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(90, 62, 54, 0.5);
+    box-shadow: 0 0 30px rgba(90,62,54,0.5);
 }
 
-/* CARDS */
 .card {
     background: #fffaf5;
     padding: 12px;
@@ -111,13 +166,34 @@ nav button:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     border: 1px solid #e7d6c8;
     transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.card:hover {
-    transform: translateY(-2px);
+.card:hover { transform: translateY(-2px); }
+.card-info { flex: 1; }
+
+.delete-btn {
+    background: linear-gradient(135deg, #c0392b, #96281b);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-/* INPUTS */
+.delete-btn:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    transform: scale(1.05);
+}
+
 input {
     width: 100%;
     padding: 10px;
@@ -134,7 +210,6 @@ input:focus {
     box-shadow: 0 0 6px rgba(176,137,104,0.25);
 }
 
-/* BUTTON */
 button.submit {
     background: linear-gradient(90deg, #b08968, #7f5539);
     color: white;
@@ -144,97 +219,123 @@ button.submit {
     cursor: pointer;
     transition: 0.3s;
     font-size: 14px;
+    margin-top: 6px;
 }
 
-button.submit:hover {
-    transform: scale(1.05);
+button.submit:hover { transform: scale(1.05); }
+
+.empty-state {
+    text-align: center;
+    color: #a08070;
+    padding: 20px;
+    font-size: 14px;
+    font-style: italic;
 }
 
-/* MOBILE */
+.contact-count {
+    background: #b08968;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 9px;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
 @media (max-width: 600px) {
-    nav button {
-        padding: 7px 9px;
-        font-size: 11px;
-    }
-
-    .panic-btn {
-        padding: 25px;
-        font-size: 16px;
-    }
-
-    .section {
-        padding: 14px 12px;
-    }
+    nav button { padding: 7px 9px; font-size: 11px; }
+    .panic-btn { padding: 25px; font-size: 16px; }
+    .section { padding: 14px 12px; }
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>SafeHer</h1>
-<p>Your Safety Companion</p>
+  <h1>SafeHer</h1>
+  <p>Your Safety Companion</p>
 </header>
 
-<nav>
-<button onclick="showSection('home')">Home</button>
-<button onclick="showSection('profile')">Profile</button>
-<button onclick="showSection('contacts')">Contacts</button>
-<button onclick="showSection('dashboard')">Dashboard</button>
-</nav>
-
-<!-- HOME -->
-<div id="home" class="section active">
-<h2>Emergency Help</h2>
-
-<button class="panic-btn" onclick="panicAlert()">🚨 PANIC</button>
-
-<a href="tel:112" style="text-decoration:none;">
-  <button class="panic-btn">📞 CALL 112</button>
-</a>
-
-<p style="text-align:center;">Click panic → Alerts + location sent</p>
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+  <h2>Welcome to SafeHer 🌸</h2>
+  <p>Sign in to access your personal safety dashboard</p>
+  <button class="google-btn" onclick="signInWithGoogle()">
+    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+    Sign in with Google
+  </button>
 </div>
 
-<!-- PROFILE -->
-<div id="profile" class="section">
-<h2>User Profile</h2>
+<!-- APP SCREEN (shown after login) -->
+<div id="appScreen">
 
-<input id="username" placeholder="Enter your name">
-<input id="userphone" placeholder="Enter your phone number">
+  <!-- USER BAR -->
+  <div id="userBar">
+    <span id="userNameDisplay">👤 Loading...</span>
+    <button class="logout-btn" onclick="signOut()">Logout</button>
+  </div>
 
-<button class="submit" onclick="saveUser()">Save Profile</button>
+  <nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('profile')">Profile</button>
+    <button onclick="showSection('contacts')">Contacts</button>
+    <button onclick="showSection('dashboard')">Dashboard</button>
+  </nav>
 
-<p id="savedUser"></p>
-</div>
+  <!-- HOME -->
+  <div id="home" class="section active">
+    <h2>Emergency Help</h2>
+    <button class="panic-btn" onclick="panicAlert()">🚨 PANIC</button>
+    <a href="tel:112" style="text-decoration:none;">
+      <button class="panic-btn">📞 CALL 112</button>
+    </a>
+    <p style="text-align:center;">Click panic → Alerts + location sent</p>
+  </div>
 
-<!-- CONTACTS -->
-<div id="contacts" class="section">
-<h2>Emergency Contacts</h2>
+  <!-- PROFILE -->
+  <div id="profile" class="section">
+    <h2>User Profile</h2>
+    <input id="username" placeholder="Enter your name">
+    <input id="userphone" placeholder="Enter your phone number">
+    <button class="submit" onclick="saveUser()">Save Profile</button>
+    <p id="savedUser" style="margin-top:10px; color:#7f5539;"></p>
+  </div>
 
-<input id="contactName" placeholder="Contact Name">
-<input id="contactPhone" placeholder="Contact Phone">
+  <!-- CONTACTS -->
+  <div id="contacts" class="section">
+    <div class="section-header">
+      <h2>Emergency Contacts</h2>
+      <span id="contactBadge" class="contact-count">0</span>
+    </div>
+    <input id="contactName" placeholder="Contact Name">
+    <input id="contactPhone" placeholder="Contact Phone (with country code e.g. +91...)">
+    <button class="submit" onclick="addContact()">Add Contact</button>
+    <div id="contactList" style="margin-top:14px;"></div>
+  </div>
 
-<button class="submit" onclick="addContact()">Add Contact</button>
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="section">
+    <h2>📍 Live Tracking</h2>
+    <div id="locationData"></div>
+    <iframe id="map" style="width:100%; height:300px; border-radius:10px; margin-top:10px; border:none;"></iframe>
+  </div>
 
-<div id="contactList"></div>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard" class="section">
-<h2>📍 Live Tracking</h2>
-<div id="locationData"></div>
-<iframe id="map" style="width:100%; height:300px;"></iframe>
-</div>
+</div><!-- end appScreen -->
 
 <!-- Firebase v8 -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
 <script>
 
-// ✅ YOUR REAL CONFIG (already filled)
 const firebaseConfig = {
   apiKey: "AIzaSyCEGJG68RGPtwxrL-pcPFbw0P2T-xIDPp8",
   authDomain: "safeher-c7a21.firebaseapp.com",
@@ -246,163 +347,211 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const auth = firebase.auth();
 
+let currentUser = null;
+let contactsListener = null;
+let locationsListener = null;
 
-// Navigation
-function showSection(id){
+// ── Auth State ───────────────────────────────────────────
+auth.onAuthStateChanged(user => {
+  if (user) {
+    currentUser = user;
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("appScreen").style.display = "block";
+    document.getElementById("userNameDisplay").innerText = `👤 ${user.displayName || user.email}`;
+    loadUser();
+    displayContacts();
+    loadDashboard();
+  } else {
+    currentUser = null;
+    document.getElementById("loginScreen").style.display = "flex";
+    document.getElementById("appScreen").style.display = "none";
+    // Detach listeners
+    if (contactsListener) contactsListener();
+    if (locationsListener) locationsListener();
+  }
+});
 
-    document.querySelectorAll('.section').forEach(sec => {
-        sec.classList.remove('active');
-        sec.style.display = "none";
-    });
-
-    let active = document.getElementById(id);
-    active.classList.add('active');
-    active.style.display = "block";
+// ── Google Sign In ───────────────────────────────────────
+function signInWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider).catch(err => alert("Login failed: " + err.message));
 }
 
-// 🚨 PANIC ALERT
-function panicAlert(){
-
-    if(!confirm("Are you in danger?")) return;
-
-    let alarm = new Audio("https://www.soundjay.com/button/beep-07.wav");
-    alarm.play();
-
-    db.collection("contacts").get().then(snapshot => {
-
-        if(snapshot.empty){
-            alert("No contacts saved!");
-            return;
-        }
-
-        navigator.geolocation.getCurrentPosition(position => {
-
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-
-            let locationLink = `https://maps.google.com/?q=${lat},${lon}`;
-
-            let message = `🚨 EMERGENCY ALERT 🚨
-I need help immediately!
-📍 ${locationLink}`;
-
-            // Save location
-            db.collection("locations").add({
-                lat, lon,
-                time: Date.now()
-            });
-
-            // Send WhatsApp to all contacts
-            snapshot.forEach(doc => {
-                let c = doc.data();
-                let phone = c.phone.replace(/\D/g, "");
-
-                let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-                window.open(url, "_blank");
-            });
-
-        }, () => alert("Allow location access!"));
-
-    });
+// ── Sign Out ─────────────────────────────────────────────
+function signOut() {
+  if (!confirm("Logout?")) return;
+  auth.signOut();
 }
 
-
-// Save User
-function saveUser(){
-    let name = document.getElementById("username").value;
-    let phone = document.getElementById("userphone").value;
-
-    localStorage.setItem("user", JSON.stringify({name, phone}));
-
-    document.getElementById("savedUser").innerText =
-        `Saved: ${name} (${phone})`;
+// ── Navigation ───────────────────────────────────────────
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+    sec.style.display = "none";
+  });
+  let active = document.getElementById(id);
+  active.classList.add('active');
+  active.style.display = "block";
 }
 
+// ── Panic Alert ──────────────────────────────────────────
+function panicAlert() {
+  if (!confirm("Are you in danger?")) return;
 
-// Load User
-function loadUser(){
-    let user = JSON.parse(localStorage.getItem("user"));
-    if(user){
-        document.getElementById("savedUser").innerText =
-            `Saved: ${user.name} (${user.phone})`;
+  let alarm = new Audio("https://www.soundjay.com/button/beep-07.wav");
+  alarm.play();
+
+  // Each user's own contacts
+  db.collection("users").doc(currentUser.uid)
+    .collection("contacts").get().then(snapshot => {
+
+    if (snapshot.empty) {
+      alert("No contacts saved! Please add emergency contacts first.");
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(position => {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      let locationLink = `https://maps.google.com/?q=${lat},${lon}`;
+      let message = `🚨 EMERGENCY ALERT 🚨\nI need help immediately!\n📍 ${locationLink}`;
+
+      // Save to this user's locations
+      db.collection("users").doc(currentUser.uid)
+        .collection("locations").add({ lat, lon, time: Date.now() });
+
+      snapshot.forEach(doc => {
+        let c = doc.data();
+        let phone = c.phone.replace(/\D/g, "");
+        let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+      });
+
+    }, () => alert("Please allow location access!"));
+  });
 }
 
+// ── Save User Profile ────────────────────────────────────
+function saveUser() {
+  let name = document.getElementById("username").value.trim();
+  let phone = document.getElementById("userphone").value.trim();
+  if (!name || !phone) { alert("Please fill in both fields."); return; }
 
-// Add Contact
-function addContact(){
-    let name = document.getElementById("contactName").value;
-    let phone = document.getElementById("contactPhone").value;
-
-    db.collection("contacts").add({name, phone})
+  // Save to Firestore under this user
+  db.collection("users").doc(currentUser.uid).set({ name, phone }, { merge: true })
     .then(() => {
-        alert("Contact added!");
-        displayContacts();
-    });
-
-    document.getElementById("contactName").value = "";
-    document.getElementById("contactPhone").value = "";
-}
-
-
-// Display Contacts
-function displayContacts(){
-    db.collection("contacts").onSnapshot(snapshot => {
-
-        let list = document.getElementById("contactList");
-        list.innerHTML = "";
-
-        snapshot.forEach(doc => {
-            let c = doc.data();
-
-            list.innerHTML += `
-            <div class="card">
-                ${c.name} - ${c.phone}
-            </div>`;
-        });
+      document.getElementById("savedUser").innerText = `✅ Saved: ${name} (${phone})`;
     });
 }
 
+// ── Load User Profile ────────────────────────────────────
+function loadUser() {
+  db.collection("users").doc(currentUser.uid).get().then(doc => {
+    if (doc.exists) {
+      let data = doc.data();
+      document.getElementById("username").value = data.name || "";
+      document.getElementById("userphone").value = data.phone || "";
+      document.getElementById("savedUser").innerText =
+        `✅ Saved: ${data.name} (${data.phone})`;
+    }
+  });
+}
 
-// 📍 Dashboard (Improved)
-function loadDashboard(){
-    db.collection("locations")
-    .orderBy("time","desc")
+// ── Add Contact ──────────────────────────────────────────
+function addContact() {
+  let name = document.getElementById("contactName").value.trim();
+  let phone = document.getElementById("contactPhone").value.trim();
+  if (!name || !phone) { alert("Please enter both name and phone."); return; }
+
+  db.collection("users").doc(currentUser.uid)
+    .collection("contacts").add({ name, phone })
+    .then(() => {
+      document.getElementById("contactName").value = "";
+      document.getElementById("contactPhone").value = "";
+    })
+    .catch(err => alert("Error: " + err.message));
+}
+
+// ── Delete Contact ───────────────────────────────────────
+function deleteContact(docId, name) {
+  if (!confirm(`Delete contact "${name}"?`)) return;
+
+  db.collection("users").doc(currentUser.uid)
+    .collection("contacts").doc(docId).delete()
+    .catch(err => alert("Error deleting: " + err.message));
+}
+
+// ── Display Contacts ─────────────────────────────────────
+function displayContacts() {
+  contactsListener = db.collection("users").doc(currentUser.uid)
+    .collection("contacts").onSnapshot(snapshot => {
+
+    let list = document.getElementById("contactList");
+    let badge = document.getElementById("contactBadge");
+    list.innerHTML = "";
+    badge.textContent = snapshot.size;
+
+    if (snapshot.empty) {
+      list.innerHTML = `<div class="empty-state">No contacts yet. Add one above ☝️</div>`;
+      return;
+    }
+
+    snapshot.forEach(doc => {
+      let c = doc.data();
+      list.innerHTML += `
+        <div class="card">
+          <div class="card-info">
+            <strong>${c.name}</strong><br>
+            <span style="font-size:13px; color:#7f5539;">${c.phone}</span>
+          </div>
+          <button class="delete-btn"
+            onclick="deleteContact('${doc.id}', '${c.name.replace(/'/g,"\\'")}')">
+            🗑️ Delete
+          </button>
+        </div>`;
+    });
+  });
+}
+
+// ── Dashboard ────────────────────────────────────────────
+function loadDashboard() {
+  locationsListener = db.collection("users").doc(currentUser.uid)
+    .collection("locations")
+    .orderBy("time", "desc")
     .limit(10)
     .onSnapshot(snapshot => {
 
-        let container = document.getElementById("locationData");
-        container.innerHTML = "";
+    let container = document.getElementById("locationData");
+    container.innerHTML = "";
+    let first = true;
 
-        let first = true;
+    snapshot.forEach(doc => {
+      let loc = doc.data();
+      let time = new Date(loc.time).toLocaleString();
+      container.innerHTML += `
+        <div class="card">
+          <div class="card-info">
+            📍 <strong>Lat:</strong> ${loc.lat.toFixed(5)},
+            <strong>Lon:</strong> ${loc.lon.toFixed(5)}<br>
+            <span style="font-size:12px; color:#a08070;">🕐 ${time}</span>
+          </div>
+        </div>`;
 
-        snapshot.forEach(doc => {
-            let loc = doc.data();
-
-            container.innerHTML += `
-            <div class="card">
-                Lat: ${loc.lat} <br>
-                Lon: ${loc.lon}
-            </div>`;
-
-            // Show only latest on map
-            if(first){
-                document.getElementById("map").src =
-                `https://maps.google.com/maps?q=${loc.lat},${loc.lon}&z=15&output=embed`;
-                first = false;
-            }
-        });
+      if (first) {
+        document.getElementById("map").src =
+          `https://maps.google.com/maps?q=${loc.lat},${loc.lon}&z=15&output=embed`;
+        first = false;
+      }
     });
+
+    if (snapshot.empty) {
+      container.innerHTML = `<div class="empty-state">No locations recorded yet.</div>`;
+    }
+  });
 }
 
-
-// Load everything
-loadUser();
-displayContacts();
-loadDashboard();
-
 </script>
-
 </body>
 </html>
