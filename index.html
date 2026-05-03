@@ -127,10 +127,15 @@ button.submit:hover {
 }
 .section {
     display: none;
+    padding: 25px;
 }
 
 .section.active {
     display: block;
+}
+.section {
+    width: 100%;
+    min-height: 100vh;
 }
 
 /* Mobile Responsive */
@@ -228,10 +233,16 @@ const db = firebase.firestore();
 
 // Navigation
 function showSection(id){
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-}
 
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+        sec.style.display = "none";
+    });
+
+    let active = document.getElementById(id);
+    active.classList.add('active');
+    active.style.display = "block";
+}
 
 // 🚨 PANIC ALERT
 function panicAlert(){
